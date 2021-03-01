@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/char_name"
+        android:id="@+id/weatherView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Afganisthan"
@@ -39,8 +39,8 @@
         android:text="Kaboul"
         android:textSize="16dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/char_name"
-        app:layout_constraintTop_toTopOf="@+id/char_name" />
+        app:layout_constraintStart_toEndOf="@+id/weatherView"
+        app:layout_constraintTop_toTopOf="@+id/weatherView" />
 
     <TextView
         android:id="@+id/anime_rating"

@@ -4,38 +4,36 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import code.challenge.mvvmsample.R
-import com.squareup.picasso.Picasso
-import code.challenge.mvvmsample.model.CharacterContent
+import code.challenge.mvvmsample.model.ContentModel
 
-class ResultsRecyclerViewAdapter(_context : Context, _animeList:List<CharacterContent>) : RecyclerView.Adapter<ResultsRecyclerViewAdapter.CountryViewHolder>() {
+class ResultsRecyclerViewAdapter(_context : Context, _List:Array<ContentModel>) : RecyclerView.Adapter<ResultsRecyclerViewAdapter.WeatherViewHolder>() {
 
     val context = _context
-    val list = _animeList
+    val list = _List
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.anime_character_item_layout,parent,false)
-        return CountryViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherViewHolder {
+        val view = LayoutInflater.from(context).inflate(R.layout.forecast_Item_layout,parent,false)
+        return WeatherViewHolder(view)
     }
 
     override fun getItemCount(): Int {
         return list.size
     }
 
-    override fun onBindViewHolder(holder: CountryViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: WeatherViewHolder, position: Int) {
         val characterContent = list[position]
-        Picasso.get().load(characterContent.image_url).into(holder.characterImage)
-        holder.characterTitle.text = characterContent.name
+        holder.weatherView.text = characterContent.weather[0].main
+        holder.weatcherDescription.text = "Temp: ${characterContent.main.temp}"
 
     }
 
-    class CountryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    class WeatherViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {
-        val characterTitle : TextView = itemView.findViewById(R.id.char_name)
-        val characterImage : ImageView = itemView.findViewById(R.id.char_image)
+        val weatherView : TextView = itemView.findViewById(R.id.weatherView)
+        val weatcherDescription : TextView = itemView.findViewById(R.id.temp)
     }
 
 }

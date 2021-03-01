@@ -2,15 +2,12 @@ package code.challenge.mvvmsample.data
 
 import retrofit2.Call
 import retrofit2.http.GET
-import code.challenge.mvvmsample.model.AnimeModel
-import code.challenge.mvvmsample.model.CharacterModel
+import code.challenge.mvvmsample.model.MainModel
+import code.challenge.mvvmsample.model.WeatherResponse
 import retrofit2.http.Query
 
 interface RestApi {
 
-    @GET("search/anime?q=naruto")
-    fun getAnime() : Call<AnimeModel>
-
-    @GET("search/character")
-    fun getCharacters(@Query("q") charQuery: String?) : Call<CharacterModel>
+    @GET("forecast")
+    fun getForecast(@Query("q") cityQuery: String?) : Call<WeatherResponse>
 }
